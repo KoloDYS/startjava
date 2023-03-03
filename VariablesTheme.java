@@ -83,9 +83,9 @@ public class VariablesTheme {
         System.out.println("Перестановка значений переменных с помощью побитовой операции:");
         System.out.println("Исходное значение первой переменной: " + a);
         System.out.println("Исходное значение второй переменной: " + b);
-        temp = a;
-        a ^= a ^ b;
-        b ^= b ^ temp;
+        a ^= b;
+        b ^= a;
+        a ^= b;
         System.out.println("Значение первой переменной после перестановки: " + a);
         System.out.println("Значение второй переменной после перестановки: " + b);
 
