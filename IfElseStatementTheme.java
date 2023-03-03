@@ -41,7 +41,7 @@ public class IfElseStatementTheme {
         } else if (num1 > num2) {
             System.out.println("Число " + num1 + " больше числа " + num2);
         } else {
-        System.out.println("Число " + num2 + " больше числа " + num1);
+            System.out.println("Число " + num2 + " больше числа " + num1);
         }
 
         System.out.println("\n3. Проверка числа");
@@ -60,7 +60,6 @@ public class IfElseStatementTheme {
                 System.out.print("отрицательное\n");
             }
         }
-
 
         System.out.println("\n4. Поиск одинаковых цифр в числах");
         int num4 = 345;
@@ -90,11 +89,11 @@ public class IfElseStatementTheme {
 
         System.out.println("\n5. Определение символа по его коду");
         char symbol = '\u0057';
-        if ('/' < symbol && symbol < ':') {
+        if (symbol >= '0' && symbol <= '9') {
             System.out.println("Символ " + symbol + " является числом");
-        } else if ('`' < symbol && symbol < '{') {
+        } else if (symbol >= 'a' && symbol <= 'z') {
             System.out.println("Символ " + symbol + " является маленькой буквой");
-        } else if ('@' < symbol && symbol < '[') {
+        } else if (symbol >= 'A' && symbol <= 'Z') {
             System.out.println("Символ " + symbol + " является большой буквой");
         } else {
             System.out.println("Символ " + symbol + " не буква и не число");
@@ -152,53 +151,27 @@ public class IfElseStatementTheme {
 
         System.out.println("\n9. Подсчет количества банкнот");
         int usdSum = 567;
-        int hundreads = usdSum / 100;
+        int hundreds = usdSum / 100;
         int tens = usdSum % 100 / 10;
         int ones = usdSum % 10;
-        int hundread = 7;
-        int ten = 8;
-        int one = 13;
-        int remaindH;
-        int remaindO;
-        int remaindT;
-        boolean isHave = true;
+        int hundred = 6;
+        int ten = 7;
+        int one = 8;
 
-        if (hundread * 100 + ten * 10 + one < usdSum || ones > one ||
-        (hundread > hundreads && ten * 10 + one < tens * 10 + ones)) {
-            System.out.println("Не хватает банкнот для выдачи необходимой суммы");
+        if (hundreds > hundred) {
+            tens += (hundreds - hundred) * 10;
+            hundreds = hundred;
+        }
+        if (tens > ten) {
+            ones += (tens - ten) * 10;
+            tens = ten;
+        }
+        if (ones > one) {
+            System.out.println("Не хватает банкнот для выдачи необходимой суммы.");
         } else {
-            if (hundreads > hundread) {
-                hundreads -= hundread;
-                tens = tens + hundreads * 10;
-                if (tens > ten) {
-                    tens -= ten;
-                    ones = tens * 10 + ones;
-                    remaindO = one - ones;
-                    one -= remaindO;
-                } else {
-                    remaindT = ten - tens;
-                    ten -= remaindT;
-                    remaindO = one - ones;
-                    one -= remaindO;
-                }
-            } else {
-                remaindH = hundread - hundreads;
-                hundread -= remaindH;
-                if (tens > ten) {
-                    tens -= ten;
-                    ones = tens * 10 + ones;
-                    remaindO = one - ones;
-                    one -= remaindO;
-                } else {
-                    remaindT = ten - tens;
-                    ten -= remaindT;
-                    remaindO = one - ones;
-                    one -= remaindO;
-                }
-            }
             System.out.println("Для требуемой суммы: " + usdSum + 
-                    " требуется количество банкнот номиналом 100: " + hundread + 
-                    "; номиналом 10: " + ten + "; номиналом 1: " + one);
+                    " требуется количество банкнот номиналом 100: " + hundreds + 
+                    "; номиналом 10: " + tens + "; номиналом 1: " + ones);
         }
     }
 }
