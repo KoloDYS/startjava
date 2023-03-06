@@ -66,24 +66,24 @@ public class IfElseStatementTheme {
         int num5 = 942;
         int hundreads4 = num4 / 100;
         int hundreads5 = num5 / 100;
-        int tens4 = num4 % 100 / 10;
-        int tens5 = num5 % 100 / 10;
-        int ones4 = num4 % 10;
-        int ones5 = num5 % 10;
+        int tensSum4 = num4 % 100 / 10;
+        int tensSum5 = num5 % 100 / 10;
+        int onesSum4 = num4 % 10;
+        int onesSum5 = num5 % 10;
 
         System.out.println("Исходные числа: " + num4 + " и " + num5);
-        if (hundreads4 != hundreads5 && tens4 != tens5 && ones4 != ones5) {
+        if (hundreads4 != hundreads5 && tensSum4 != tensSum5 && onesSum4 != onesSum5) {
             System.out.println("Равных цифр в разрядах чисел " + num4 + " и " + num5 + " нет");
         } else {
             System.out.print("У чисел " + num4 + " и " + num5);
             if (hundreads4 == hundreads5) {
                 System.out.print(" на разряде сотен одинаковая цифра: " + hundreads4 + ",");
             }
-            if (tens4 == tens5) {
-                System.out.print(" на разряде десятков одинаковая цифра: " + tens4 );
+            if (tensSum4 == tensSum5) {
+                System.out.print(" на разряде десятков одинаковая цифра: " + tensSum4 );
             }
-            if (ones4 == ones5) {
-                System.out.print(" на разряде единиц одинаковая цифра: " + ones4);
+            if (onesSum4 == onesSum5) {
+                System.out.print(" на разряде единиц одинаковая цифра: " + onesSum4);
             }
         }
 
@@ -151,27 +151,31 @@ public class IfElseStatementTheme {
 
         System.out.println("\n9. Подсчет количества банкнот");
         int usdSum = 567;
-        int hundreds = usdSum / 100;
-        int tens = usdSum % 100 / 10;
-        int ones = usdSum % 10;
-        int hundred = 6;
-        int ten = 7;
-        int one = 8;
-
-        if (hundreds > hundred) {
-            tens += (hundreds - hundred) * 10;
-            hundreds = hundred;
-        }
-        if (tens > ten) {
-            ones += (tens - ten) * 10;
-            tens = ten;
-        }
-        if (ones > one) {
+        int hundredsSum = usdSum / 100;
+        int tensSum = usdSum % 100 / 10;
+        int onesSum = usdSum % 10;
+        int hundredATM = 10;
+        int tenATM = 5;
+        int oneATM = ;
+        //lack of physical bills 
+        if (hundredATM * 100 + tenATM * 10 + oneATM < usdSum || oneATM < onesSum) {
             System.out.println("Не хватает банкнот для выдачи необходимой суммы.");
         } else {
-            System.out.println("Для требуемой суммы: " + usdSum + 
-                    " требуется количество банкнот номиналом 100: " + hundreds + 
-                    "; номиналом 10: " + tens + "; номиналом 1: " + ones);
+            if (hundredsSum > hundredATM) {
+                tensSum += (hundredsSum - hundredATM) * 10;
+                hundredsSum = hundredATM;
+            }
+            if (tensSum > tenATM) {
+                onesSum += (tensSum - tenATM) * 10;
+                tensSum = tenATM;
+            }
+            if (onesSum > oneATM) {
+                System.out.println("Не хватает банкнот для выдачи необходимой суммы.");
+            } else {
+                System.out.println("Для требуемой суммы: " + usdSum + 
+                        " требуется количество банкнот номиналом 100: " + hundredsSum + 
+                        "; номиналом 10: " + tensSum + "; номиналом 1: " + onesSum);
+            }
         }
     }
 }
