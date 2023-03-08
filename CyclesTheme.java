@@ -35,14 +35,14 @@ public class CyclesTheme {
             System.out.print(i + " ");
         }
 
-        System.out.println("\n3.Вывод реверсивного числа и суммы его цифр");
+        System.out.println("\n\n3.Вывод реверсивного числа и суммы его цифр");
         int num = 1234;
         int sum = 0;
         while (num > 0) {
             int digit = num % 10;
             sum += digit;
             num /= 10;
-            System.out.print(digit + " ");
+            System.out.print(digit);
         }
         System.out.println("\nСумма цифр: " + sum);
 
@@ -59,44 +59,44 @@ public class CyclesTheme {
                 count %= 5;
             }
         }
-        for (int i = 0; i < 5 -count; i++) {
+        for (int i = 0; i < 5 - count; i++) {
             System.out.printf("%4d", 0);
         }
 
         System.out.println("\n\n5. Проверка количества двоек на четность/нечетность");
-        int number = 3242592;
-        int two = 0;
-        System.out.print("Число " + number);
-        while (number % 10 != 0) {
-            if (number % 10 == 2) {
-                two++;
+        num = 3242592;
+        int countTwos = 0;
+        System.out.print("Число " + num);
+        while (num > 0) {
+            if (num % 10 == 2) {
+                countTwos++;
             }
-            number /= 10;
+            num /= 10;
         }
-        if (two % 2 == 0) {
-            System.out.print(" содержит " + two + " (четное) количество двоек");
+        if (countTwos % 2 == 0) {
+            System.out.print(" содержит " + countTwos + " (четное) количество двоек");
         } else {
-            System.out.print(" содержит " + two + " (нечетное) количество двоек");
+            System.out.print(" содержит " + countTwos + " (нечетное) количество двоек");
         }
 
-        System.out.println("\n6. Отображение фигур в консоли");
+        System.out.println("\n\n6. Отображение фигур в консоли");
         for (int i = 0; i < 5; i++) {
             System.out.println();
-            for (int j =0; j < 10; j++) {
+            for (int j = 0; j < 10; j++) {
                 System.out.print("*");
             }
         }
         System.out.println();
 
         int lines = 5;
-        int temp = 5;
+        int numSymbols = 5;
         while (lines > 0) {
             System.out.println();
-            while (temp > 0) {
+            while (numSymbols > 0) {
                 System.out.print("#");
-                temp --;
+                numSymbols--;
         }
-            temp = --lines;
+            numSymbols = --lines;
         }
         System.out.println();
         //triangle
@@ -106,19 +106,19 @@ public class CyclesTheme {
             lines++;
             System.out.println();
             if (lines < 4) {
-                temp = lines;
+                numSymbols = lines;
             } else {
-                temp = 6 - lines;
+                numSymbols = 6 - lines;
             }
             do {
                 System.out.print("$");
-            } while (--temp > 0);
+            } while (--numSymbols > 0);
         } while (lines < 5);
         
-        System.out.println("\n7. Отображение ASCII-символов");
+        System.out.println("\n\n7. Отображение ASCII-символов");
         System.out.println("Dec Char");
         //odd-number symbols
-        for (int i = 1; i < 48 ; i += 2) {
+        for (int i = 1; i < 48; i += 2) {
             System.out.printf("%3d %4c %n", i, (char) i);
         }
         //even-number symbols
@@ -128,41 +128,44 @@ public class CyclesTheme {
 
         System.out.println("\n8. Проверка, является ли число палиндромом");
         int palindrome = 1234321;
-        boolean isRight = true;
-        for (int i = 1; i < 4; i++) {
-            int divider = 10;
-            int tenDegree = 8 - 2 * i;
-            for (int j = 1; j < tenDegree; j++) {
-                divider *= 10;
-            }
-            int lDigit = palindrome / divider;
-            palindrome -= divider * lDigit;
-            int rDigit = palindrome % 10;
+        int palindromeCopy = palindrome;
+        sum = 0;
+        while (palindrome > 0) {
+            int digit = palindrome % 10;
+            sum = (sum * 10) + digit;
             palindrome /= 10;
-            if (lDigit != rDigit) {
-                isRight = false;
-                break;
-            }
-            tenDegree = 0;
         }
-        System.out.println("Число является палиндромом: " + isRight);
+
+        if (palindromeCopy == sum) {
+            System.out.println("Число является палиндромом");
+        } else {
+            System.out.println("Число не является палиндромом");
+        }
 
         System.out.println("\n9. Определение, является ли число счастливым");
-        number = 567918;
-        int sum1 = sum;
-        for (int i = 0; i < 2; i++) {
-            sum = 0;
-            System.out.print("Сумма цифр ");
-            for (int j = 0; j < 3; j++) {
-                int digit = number % 10;
-                number /= 10;
-                sum += digit;
-                System.out.print(digit);
-            }
-            System.out.print(" = " + sum + "\n");
-            sum1 = sum;
+        num = 567918;
+        int rightSideOfNum = num % 1000;
+        int leftSideOfNum = num / 1000;
+        int sumOfRight = 0;
+        int sumOfLeft = 0;
+        sum = 0;
+        int sum1 = 0;
+        System.out.print("Сумма цифр: ");
+        for (int i = 0; i < 3; i++) {
+            //right side
+            int digit = rightSideOfNum % 10;
+            rightSideOfNum /= 10;
+            sumOfRight = (sumOfRight * 10) + digit;
+            sum += digit;
+            //left side
+            digit = leftSideOfNum % 10;
+            leftSideOfNum /= 10;
+            sumOfLeft = (sumOfLeft * 10) + digit;
+            sum1 += digit;
         }
-        if (sum1 == sum) {
+        System.out.println("Сумма цифр: " + sumOfRight + " = " + sum);
+        System.out.println("Сумма цифр: " + sumOfLeft + " = " + sum1);
+        if (sum == sum1) {
             System.out.println("Число является счастливым");
         } else {
             System.out.println("Число несчастливое");

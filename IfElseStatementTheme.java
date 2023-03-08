@@ -156,9 +156,9 @@ public class IfElseStatementTheme {
         int onesSum = usdSum % 10;
         int hundredATM = 10;
         int tenATM = 5;
-        int oneATM = ;
+        int oneATM = 50;
         //lack of physical bills 
-        if (hundredATM * 100 + tenATM * 10 + oneATM < usdSum || oneATM < onesSum) {
+        if (hundredATM * 100 + tenATM * 10 + oneATM < usdSum) {
             System.out.println("Не хватает банкнот для выдачи необходимой суммы.");
         } else {
             if (hundredsSum > hundredATM) {
