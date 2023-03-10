@@ -95,7 +95,7 @@ public class CyclesTheme {
             while (numSymbols > 0) {
                 System.out.print("#");
                 numSymbols--;
-        }
+            }
             numSymbols = --lines;
         }
         System.out.println();
@@ -129,14 +129,13 @@ public class CyclesTheme {
         System.out.println("\n8. Проверка, является ли число палиндромом");
         int palindrome = 1234321;
         int palindromeCopy = palindrome;
-        sum = 0;
+        int reverseNum = 0;
         while (palindrome > 0) {
-            int digit = palindrome % 10;
-            sum = (sum * 10) + digit;
+            reverseNum = (reverseNum * 10) + palindrome % 10;
             palindrome /= 10;
         }
 
-        if (palindromeCopy == sum) {
+        if (palindromeCopy == reverseNum) {
             System.out.println("Число является палиндромом");
         } else {
             System.out.println("Число не является палиндромом");
@@ -144,27 +143,25 @@ public class CyclesTheme {
 
         System.out.println("\n9. Определение, является ли число счастливым");
         num = 567918;
-        int rightSideOfNum = num % 1000;
-        int leftSideOfNum = num / 1000;
-        int sumOfRight = 0;
-        int sumOfLeft = 0;
+        int rightHalfNum = num % 1000;
+        int leftHalfNum = num / 1000;
+        int sumRightHalf = 0;
+        int sumLeftHalf = 0;
         sum = 0;
         int sum1 = 0;
         System.out.print("Сумма цифр: ");
         for (int i = 0; i < 3; i++) {
             //right side
-            int digit = rightSideOfNum % 10;
-            rightSideOfNum /= 10;
-            sumOfRight = (sumOfRight * 10) + digit;
+            int digit = rightHalfNum % 10;
+            rightHalfNum /= 10;
             sum += digit;
             //left side
-            digit = leftSideOfNum % 10;
-            leftSideOfNum /= 10;
-            sumOfLeft = (sumOfLeft * 10) + digit;
+            digit = leftHalfNum % 10;
+            leftHalfNum /= 10;
             sum1 += digit;
         }
-        System.out.println("Сумма цифр: " + sumOfRight + " = " + sum);
-        System.out.println("Сумма цифр: " + sumOfLeft + " = " + sum1);
+        System.out.println("Сумма цифр: " + num % 1000 + " = " + sum);
+        System.out.println("Сумма цифр: " + num / 1000 + " = " + sum1);
         if (sum == sum1) {
             System.out.println("Число является счастливым");
         } else {
