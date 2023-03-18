@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class Calculator {
     private int a;
     private int b;
-    private int result = 0;
-    private char sign = '^';
+    private int result;
+    private char sign;
     Scanner scan = new Scanner(System.in);
 
     public int getA() {
@@ -36,7 +36,7 @@ public class Calculator {
         }
     }
 
-    public void calculate(int a, int b, char sign){
+    public void calculate() {
         switch (sign) {
             case '+':
                 result = a + b;
