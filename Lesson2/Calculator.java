@@ -1,8 +1,11 @@
+import java.util.Scanner;
+
 public class Calculator {
     private int a;
     private int b;
     private int result = 0;
     private char sign = '^';
+    Scanner scan = new Scanner(System.in);
 
     public int getA() {
         return a;
@@ -24,8 +27,13 @@ public class Calculator {
         return sign;
     }
 
-    public void setSign(char sign) {
-        this.sign = sign;
+    public void setSign(char signOfOperation) {
+        this.sign = signOfOperation;
+        while (!(sign == '+' || sign == '-' || sign == '%' || sign == '*' ||
+                sign == '^' || sign == '/')) {
+                    System.out.println("Введите корректный знак математической операции: ");
+                    this.sign = scan.next().charAt(0);
+        }
     }
 
     public void calculate(int a, int b, char sign){
