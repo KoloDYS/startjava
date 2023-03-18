@@ -2,8 +2,7 @@ import java.util.Scanner;
 
 public class GuessNumberTest {
     public static void main(String[] args) {
-        boolean isNext;
-        boolean isContinue = true;
+        String answer;
         Scanner scanner = new Scanner(System.in);
         Player player1 = new Player();
         Player player2 = new Player();
@@ -11,18 +10,11 @@ public class GuessNumberTest {
         do {
             game.guessNumber();
             System.out.print("Хотите продолжить игру? [yes/no]:\n");
-            do {
-                String answer = scanner.next();
-                if (answer.equals("no")) {
-                    isContinue = false;
-                    isNext = false;
-                } else if (answer.equals("yes")) {
-                    isNext = false;
-                } else {
-                    System.out.print("Вы ввели недопустимый ответ, введите корректный ответ: ");
-                    isNext = true;
-                };
-            } while (isNext);
-        } while (isContinue);
+            answer = scanner.next();
+            while (!answer.equals("yes") & !answer.equals("no")) {
+                System.out.print("Вы ввели недопустимый ответ, введите корректный ответ: ");
+                answer = scanner.nextLine();
+            }
+        } while (answer.equals("yes"));
     }
 }

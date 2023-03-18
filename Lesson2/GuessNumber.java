@@ -5,6 +5,11 @@ public class GuessNumber {
     private Player player1;
     private Player player2;
 
+    public GuessNumber(Player player1, Player player2) {
+    this.player1 = player1;
+    this.player2 = player2;
+    }
+
     public void guessNumber(){
         Random random = new Random();
         int num = random.nextInt(1,100);
@@ -38,10 +43,5 @@ public class GuessNumber {
                         " меньше того, что загадал компьютер");
             }
         }
-    }
-
-    public GuessNumber(Player player1, Player player2) {
-    this.player1 = player1;
-    this.player2 = player2;
     }
 }
