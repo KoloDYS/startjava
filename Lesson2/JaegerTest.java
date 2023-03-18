@@ -1,7 +1,6 @@
 public class JaegerTest {
     public static void main(String[] args) {
         Jaeger robot1 = new Jaeger();
-        Jaeger robot2 = new Jaeger("Mark-5", "Australia", 250, 10, 9);
 
         robot1.setMark("Mark-3");
         robot1.setOrigin("USA");
@@ -9,14 +8,15 @@ public class JaegerTest {
         robot1.setSpeed(7);
         robot1.setArmor(6);
 
+        Jaeger robot2 = new Jaeger("Mark-5", "Australia", 250, 10, 9);
         System.out.println("Сравнение марок двух роботов: " +
                 robot1.getMark() + " и " +  robot2.getMark());
 
         System.out.println("Скорость 1-го и 2-го роботов соответственно: " +
                 robot1.getSpeed() + " и " + robot2.getSpeed());
 
-        robot1.increaseSpeed(2);
-        robot2.decreaseSpeed(1);
+        robot1.increaseSpeed();
+        robot2.decreaseSpeed();
         System.out.println("После изменения скоростей: " + robot1.getSpeed() + " и " +
                  robot2.getSpeed());
 

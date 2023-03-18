@@ -5,6 +5,16 @@ public class Jaeger {
     private int speed;
     private int armor;
 
+    public Jaeger() {}
+
+    public Jaeger(String mark, String origin, int height, int speed, int armor) {
+        this.mark = mark;
+        this.origin = origin;
+        this.height = height;
+        this.speed = speed;
+        this.armor = armor;
+    }
+
     public void setMark(String mark) {
         this.mark = mark;
     }
@@ -45,12 +55,12 @@ public class Jaeger {
         return armor;
     }
 
-    public void increaseSpeed(int speed) {
-        this.speed += speed;
+    public void increaseSpeed() {
+        this.speed++;
     }
 
-    public void decreaseSpeed(int speed) {
-        this.speed -= speed;
+    public void decreaseSpeed() {
+        this.speed--;
     }
 
     public void takeArmor() {
@@ -59,15 +69,5 @@ public class Jaeger {
 
     public void removeArmor() {
         System.out.println("броня снята");
-    }
-
-    public Jaeger() {}
-
-    public Jaeger(String mark, String origin, int height, int speed, int armor) {
-        this.mark = mark;
-        this.origin = origin;
-        this.height = height;
-        this.speed = speed;
-        this.armor = armor;
     }
 }
