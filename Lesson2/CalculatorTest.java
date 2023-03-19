@@ -7,7 +7,6 @@ public class CalculatorTest {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Начало математических вычислений");
         do {
-            boolean isNext;
             System.out.print("\nВведите первое число: ");
             calculator.setA(scanner.nextInt());
             System.out.print("\nВведите знак математической операции: ");
@@ -18,7 +17,7 @@ public class CalculatorTest {
             calculator.calculate();
             System.out.print("Хотите продолжить вычисления? [yes/no]:\n");
             answer = scanner.next();
-            while (!answer.equals("yes") & !answer.equals("no")) {
+            while (!answer.equals("yes") && !answer.equals("no")) {
                 System.out.print("Вы ввели недопустимый ответ, введите корректный ответ: ");
                 answer = scanner.nextLine();
             }

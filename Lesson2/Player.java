@@ -2,12 +2,10 @@ import java.util.Scanner;
 
 public class Player {
     private String name;
-    private int num = 0;
+    private int num;
 
-    public Player() {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Введите имя игрока: ");
-        this.name = scan.next();
+    public Player(String name) {
+        this.name = name;
     }
 
     public void setNum(int num) {
@@ -20,6 +18,6 @@ public class Player {
 
     @Override
     public String toString() {
-        return this.name;
+        return name;
     }
 }

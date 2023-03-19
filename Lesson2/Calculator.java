@@ -5,7 +5,6 @@ public class Calculator {
     private int b;
     private int result;
     private char sign;
-    Scanner scan = new Scanner(System.in);
 
     public int getA() {
         return a;
@@ -28,11 +27,12 @@ public class Calculator {
     }
 
     public void setSign(char signOfOperation) {
-        this.sign = signOfOperation;
+        sign = signOfOperation;
         while (!(sign == '+' || sign == '-' || sign == '%' || sign == '*' ||
                 sign == '^' || sign == '/')) {
+                    Scanner scan = new Scanner(System.in);
                     System.out.println("Введите корректный знак математической операции: ");
-                    this.sign = scan.next().charAt(0);
+                    sign = scan.nextLine().charAt(0);
         }
     }
 
@@ -59,7 +59,7 @@ public class Calculator {
                     result *= a;
                 }
                 break;
-            }
+        }
         System.out.println(a + " " + sign + " " + b + " = " + result);
     }
 }
