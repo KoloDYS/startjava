@@ -12,7 +12,7 @@ public class GuessNumber {
 
     public void guessNumber() {
         Random random = new Random();
-        int num = random.nextInt(1,100);
+        int num = random.nextInt(1, 101);
         Scanner scan = new Scanner(System.in);
         System.out.println("Игра “Угадай число”");
         while (true) {
