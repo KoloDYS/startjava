@@ -15,44 +15,46 @@ public class Calculator {
     }
 
     public void setSign(char signOfOperation) {
+        sign = signOfOperation;
+    }
+
+
+    public void calculate() {
         while (true) {
-            switch(signOfOperation) {
-                case '+', '-', '%', '*', '^', '/':
-                    sign = signOfOperation;
+            switch (sign) {
+                case '+':
+                    result = a + b;
+                    System.out.println(a + " " + sign + " " + b + " = " + result);
+                    return;
+                case '-':
+                    result = a - b;
+                    System.out.println(a + " " + sign + " " + b + " = " + result);
+                    return;
+                case '*':
+                    result = a * b;
+                    System.out.println(a + " " + sign + " " + b + " = " + result);
+                    return;
+                case '/':
+                    result = a / b;
+                    System.out.println(a + " " + sign + " " + b + " = " + result);
+                    return;
+                case '%':
+                    result = a % b;
+                    System.out.println(a + " " + sign + " " + b + " = " + result);
+                    return;
+                case '^':
+                    result = a;
+                    for (int i = 1; i < b; i++) {
+                        result *= a;
+                    }
+                    System.out.println(a + " " + sign + " " + b + " = " + result);
                     return;
                 default:
                     Scanner scan = new Scanner(System.in);
                     System.out.println("Введите корректный знак математической операции: ");
-                    signOfOperation = scan.nextLine().charAt(0);
+                    sign = scan.next().charAt(0);
                     break;
             }
         }
-    }
-
-    public void calculate() {
-        switch (sign) {
-            case '+':
-                result = a + b;
-                break;
-            case '-':
-                result = a - b;
-                break;
-            case '*':
-                result = a * b;
-                break;
-            case '/':
-                result = a / b;
-                break;
-            case '%':
-                result = a % b;
-                break;
-            case '^':
-                result = a;
-                for (int i = 1; i < b; i++) {
-                    result *= a;
-                }
-                break;
-        }
-        System.out.println(a + " " + sign + " " + b + " = " + result);
     }
 }
