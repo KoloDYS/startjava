@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Calculator {
     private int a;
     private int b;
-    private int result;
     private char sign;
 
     public void setA(int a) {
@@ -14,47 +13,39 @@ public class Calculator {
         this.b = b;
     }
 
-    public void setSign(char signOfOperation) {
-        sign = signOfOperation;
+    public void setSign(char sign) {
+        this.sign = sign;
     }
 
 
     public void calculate() {
-        while (true) {
-            switch (sign) {
-                case '+':
-                    result = a + b;
-                    System.out.println(a + " " + sign + " " + b + " = " + result);
-                    return;
-                case '-':
-                    result = a - b;
-                    System.out.println(a + " " + sign + " " + b + " = " + result);
-                    return;
-                case '*':
-                    result = a * b;
-                    System.out.println(a + " " + sign + " " + b + " = " + result);
-                    return;
-                case '/':
-                    result = a / b;
-                    System.out.println(a + " " + sign + " " + b + " = " + result);
-                    return;
-                case '%':
-                    result = a % b;
-                    System.out.println(a + " " + sign + " " + b + " = " + result);
-                    return;
-                case '^':
-                    result = a;
-                    for (int i = 1; i < b; i++) {
-                        result *= a;
-                    }
-                    System.out.println(a + " " + sign + " " + b + " = " + result);
-                    return;
-                default:
-                    Scanner scan = new Scanner(System.in);
-                    System.out.println("Введите корректный знак математической операции: ");
-                    sign = scan.next().charAt(0);
-                    break;
-            }
+        int result = 0;
+        switch (sign) {
+            case '+':
+                result = a + b;
+                break;
+            case '-':
+                result = a - b;
+                break;
+            case '*':
+                result = a * b;
+                break;
+            case '/':
+                result = a / b;
+                break;
+            case '%':
+                result = a % b;
+                break;
+            case '^':
+                result = a;
+                for (int i = 1; i < b; i++) {
+                    result *= a;
+                }
+                break;
+            default:
+                System.out.println("Знак математической операции некорректен. Повторите ввод ");
+                break;
         }
+        System.out.println("Результат: " + a + " " + sign + " " + b + " = " + result);
     }
 }
