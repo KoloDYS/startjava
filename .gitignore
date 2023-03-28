@@ -1,6 +1,10 @@
 #folder out
 out
 # options for javac 
-src/com/startjava/lesson_2_3/calculator/optionsj
+src/com/startjava/lesson_2_3_4/calculator/optionsj
 # optionsj for java 
-src/com/startjava/lesson_2_3/calculator/options
+src/com/startjava/lesson_2_3_4/calculator/options
+# .idea things
+.idea
+# .iml
+startjava.iml
