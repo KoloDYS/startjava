@@ -1,7 +1,5 @@
 package com.startjava.lesson_2_3_4.array;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.Arrays;
 
 public class ArrayTheme {
