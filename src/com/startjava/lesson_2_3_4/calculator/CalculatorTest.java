@@ -9,16 +9,15 @@ public class CalculatorTest {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Начало математических вычислений");
         do {
-            System.out.print("\nВведите первое число: ");
-            calculator.setA(scanner.nextInt());
-            System.out.print("\nВведите знак математической операции: ");
-            calculator.setSign(scanner.next().charAt(0));
-            System.out.print("\nВведите второе число: ");
-            calculator.setB(scanner.nextInt());
-            System.out.println("Результат вычислений:");
-            calculator.calculate();
+            System.out.print("\nВведите математическое выражение: ");
+            calculator.setExpression(scanner.nextLine());
+            System.out.println("Результат вычислений: ");
+            if (calculator.calculate() != Double.MIN_VALUE) {
+                System.out.println(calculator.calculate() % 1 == 0 ?
+                        (int) calculator.calculate() + "" : calculator.calculate());
+            }
             System.out.print("Хотите продолжить вычисления? [yes/no]:\n");
-            answer = scanner.next();
+            answer = scanner.nextLine();
             while (!answer.equals("yes") && !answer.equals("no")) {
                 System.out.print("Вы ввели недопустимый ответ, введите корректный ответ: ");
                 answer = scanner.nextLine();

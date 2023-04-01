@@ -5,47 +5,24 @@ public class Calculator {
     private int b;
     private char sign;
 
-    public void setA(int a) {
-        this.a = a;
+    public void setExpression(String expression) {
+        String[] charsOfExpression = expression.split(" ");
+        a = Integer.parseInt(charsOfExpression[0]);
+        sign = charsOfExpression[1].charAt(0);
+        b = Integer.parseInt(charsOfExpression[2]);
     }
 
-    public void setB(int b) {
-        this.b = b;
-    }
-
-    public void setSign(char sign) {
-        this.sign = sign;
-    }
-
-
-    public void calculate() {
-        int result = 0;
+    public double calculate() {
+        double result = Double.MIN_VALUE;
         switch (sign) {
-            case '+':
-                result = a + b;
-                break;
-            case '-':
-                result = a - b;
-                break;
-            case '*':
-                result = a * b;
-                break;
-            case '/':
-                result = a / b;
-                break;
-            case '%':
-                result = a % b;
-                break;
-            case '^':
-                result = a;
-                for (int i = 1; i < b; i++) {
-                    result *= a;
-                }
-                break;
-            default:
-                System.out.println("Знак математической операции некорректен. Повторите ввод ");
-                break;
+            case '+' -> result = Math.addExact(a, b);
+            case '-' -> result = Math.subtractExact(a, b);
+            case '*' -> result = Math.multiplyExact(a, b);
+            case '/' -> result = (double) a / (double) b;
+            case '%' -> result = (double) a % (double) b;
+            case '^' -> result = Math.pow(a, b);
+            default -> System.out.println("Знак математической операции некорректен. Повторите ввод");
         }
-        System.out.println("Результат: " + a + " " + sign + " " + b + " = " + result);
+        return result;
     }
 }
