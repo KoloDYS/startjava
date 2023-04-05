@@ -1,18 +1,21 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
-    private int a;
-    private int b;
-    private char sign;
+    private static int a;
+    private static int b;
+    private static char sign;
 
-    private void setExpression(String expression) {
+    private static void setExpression(String expression) {
         String[] elements = expression.split(" ");
         a = Integer.parseInt(elements[0]);
         sign = elements[1].charAt(0);
         b = Integer.parseInt(elements[2]);
+        if (a <= 0 || b <= 0) {
+            throw new RuntimeException();
+        }
     }
 
-    public double calculate(String expression) {
+    public static double calculate(String expression) {
         setExpression(expression);
         return switch (sign) {
             case '+' -> Math.addExact(a, b);
@@ -23,7 +26,7 @@ public class Calculator {
             case '^' -> Math.pow(a, b);
             default ->  {
                 System.out.print("Знак математической операции некорректен. Повторите ввод");
-                yield 0;
+                yield Double.MIN_VALUE;
             }
         };
     }
