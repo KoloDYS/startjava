@@ -11,12 +11,10 @@ public class CalculatorTest {
             if (answer.equals("yes")) {
                 System.out.print("\nВведите математическое выражение, содержащее целые положительные числа: ");
                 try {
-                    double res = Calculator.calculate(scanner.nextLine());
-                    if (res != Double.MIN_VALUE) {
-                        System.out.println("\nРезультат вычислений: " + (res % 1 == 0 ? (int) res + "" : res));
-                    }
+                    double result = Calculator.calculate(scanner.nextLine());
+                        System.out.println("\nРезультат вычислений: " + (result % 1 == 0 ? (int) result + "" : result));
                 } catch (RuntimeException e) {
-                    System.out.println("Введите допустимые значения");
+                    System.out.println(e.getMessage());
                 }
                 System.out.print("\nХотите продолжить вычисления? [yes/no]:\n");
             } else {
