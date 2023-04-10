@@ -49,6 +49,11 @@ public class GuessNumber {
         player2.nullplayerAttempts();
     }
 
+    private static void isEndAttempts(Player player) {
+        if (player.getplayerAttempts() == 10) {
+            System.out.println("У " + player + " закончились попытки");
+        }
+    }
     private static boolean isGuess(Player player, int num) {
         if (player.getNum() == num) {
             System.out.println("Игрок " + player + " угадал число " + num + " c " +
@@ -61,11 +66,5 @@ public class GuessNumber {
             System.out.println("Число " + player.getNum() + " меньше того, что загадал компьютер");
         }
         return false;
-    }
-
-    private static void isEndAttempts(Player player) {
-        if (player.getplayerAttempts() == 10) {
-            System.out.println("У " + player + " закончились попытки");
-        }
     }
 }
