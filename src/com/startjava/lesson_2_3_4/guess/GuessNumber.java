@@ -1,6 +1,5 @@
 package com.startjava.lesson_2_3_4.guess;
 
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -21,40 +20,21 @@ public class GuessNumber {
         while (true) {
             System.out.println("Ход игрока " + player1);
             System.out.println("Введите число от 1 до 100");
-            player1.setNum(scan.nextInt());
-            if (player1.getNum() == num) {
-                System.out.println("Игрок " + player1 + " угадал число " + num + " c " +
-                        player1.getIndex() + " попытки." );
+            player1.addNum(scan.nextInt());
+            if (isGuess(player1, num)) {
                 break;
             }
-            if (player1.getNum() > num) {
-                System.out.println("Число " + player1.getNum() + " больше того, что загадал компьютер");
-            } else {
-                System.out.println("Число " + player1.getNum() + " меньше того, что загадал компьютер");
-            }
-            if (player1.getIndex() == 10) {
-                System.out.println("У " + player1 + " закончились попытки");
-            }
+            isEndAttempts(player1);
 
             System.out.println("Ход переходит к игроку " + player2);
             System.out.println("Введите число от 1 до 100");
-            player2.setNum(scan.nextInt());
-            if (player2.getNum() == num) {
-                System.out.println("Игрок " + player2 + " угадал число " + num + " c " +
-                        player2.getIndex() + " попытки." );
+            player2.addNum(scan.nextInt());
+            if (isGuess(player2, num)) {
                 break;
             }
-            if (player2.getNum() > num) {
-                System.out.println("Число " + player2.getNum() +
-                        " больше того, что загадал компьютер");
-            } else {
-                System.out.println("Число " + player2.getNum() +
-                        " меньше того, что загадал компьютер");
-            }
-            if (player2.getIndex() == 10) {
-                System.out.println("У " + player2 + " закончились попытки");
-            }
-            if (player2.getIndex() == 10 || player1.getIndex() == 10) {
+            isEndAttempts(player2);
+
+            if (player2.getplayerAttempts() == 10 || player1.getplayerAttempts() == 10) {
                 System.out.println("Попытки закончились у обоих игроков.");
                 break;
             }
@@ -62,18 +42,30 @@ public class GuessNumber {
         System.out.println("Конец игры!");
         System.out.println("Числа игроков: ");
         System.out.print(player1 + ": ");
-        outputAndNullArray(player1.getArray(), player1.getIndex());
+        player1.outputAndNullArray();
+        player1.nullplayerAttempts();
         System.out.print(player2 + ": ");
-        outputAndNullArray(player2.getArray(), player2.getIndex());
-        player1.nullIndex();
-        player2.nullIndex();
+        player2.outputAndNullArray();
+        player2.nullplayerAttempts();
     }
-    private static void outputAndNullArray(int[] array, int index) {
-        int[] copyArray = Arrays.copyOf(array,index);
-        for (int num : copyArray) {
-            System.out.print(num + " ");
+
+    private static boolean isGuess(Player player, int num) {
+        if (player.getNum() == num) {
+            System.out.println("Игрок " + player + " угадал число " + num + " c " +
+                    player.getplayerAttempts() + " попытки." );
+            return true;
         }
-        System.out.println();
-        Arrays.fill(array, 0, index, 0);
+        if (player.getNum() > num) {
+            System.out.println("Число " + player.getNum() + " больше того, что загадал компьютер");
+        } else {
+            System.out.println("Число " + player.getNum() + " меньше того, что загадал компьютер");
+        }
+        return false;
+    }
+
+    private static void isEndAttempts(Player player) {
+        if (player.getplayerAttempts() == 10) {
+            System.out.println("У " + player + " закончились попытки");
+        }
     }
 }

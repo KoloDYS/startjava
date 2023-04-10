@@ -12,7 +12,8 @@ public class CalculatorTest {
                 System.out.print("\nВведите математическое выражение, содержащее целые положительные числа: ");
                 try {
                     double result = Calculator.calculate(scanner.nextLine());
-                        System.out.println("\nРезультат вычислений: " + (result % 1 == 0 ? (int) result + "" : result));
+                        System.out.println("\nРезультат вычислений: " + (result % 1 == 0 ?
+                                (int) result + "" : result));
                 } catch (RuntimeException e) {
                     System.out.println(e.getMessage());
                 }

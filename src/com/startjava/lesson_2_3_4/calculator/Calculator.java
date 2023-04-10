@@ -23,10 +23,10 @@ public class Calculator {
         a = Integer.parseInt(elements[0]);
         sign = elements[1].charAt(0);
         b = Integer.parseInt(elements[2]);
-        compareElements(a,b);
+        isPositive(a,b);
     }
 
-    private static void compareElements(int a, int b) {
+    private static void isPositive(int a, int b) {
         if (a <= 0 || b <= 0) {
             throw new RuntimeException("Введите подходящие числа");
         }

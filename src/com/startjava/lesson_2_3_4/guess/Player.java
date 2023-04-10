@@ -1,27 +1,39 @@
 package com.startjava.lesson_2_3_4.guess;
 
+import java.util.Arrays;
+
 public class Player {
     private final String name;
-    private int index = 0;
+    private int playerAttempt;
     private int[] nums = new int[10];
 
     public Player(String name) {
         this.name = name;
     }
-    public int[] getArray() {
-        return nums;
+
+    public void addNum(int num) {
+        nums[playerAttempt++] = num;
     }
-    public void setNum(int num) {
-        nums[index++] = num;
-    }
+
     public int getNum() {
-        return nums[index - 1];
+        return nums[playerAttempt - 1];
     }
-    public void nullIndex() {
-        index = 0;
+
+    public void nullplayerAttempts() {
+        playerAttempt = 0;
     }
-    public int getIndex() {
-        return index;
+
+    public int getplayerAttempts() {
+        return playerAttempt;
+    }
+
+    public void outputAndNullArray() {
+        int[] copyArray = Arrays.copyOf(nums,playerAttempt);
+        for (int num : copyArray) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+        Arrays.fill(nums, 0, playerAttempt, 0);
     }
 
     @Override
