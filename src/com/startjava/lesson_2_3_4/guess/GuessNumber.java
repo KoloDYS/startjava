@@ -34,7 +34,7 @@ public class GuessNumber {
             }
             isEndAttempts(player2);
 
-            if (player2.getplayerAttempts() == 10 || player1.getplayerAttempts() == 10) {
+            if (player2.getplayerAttempts() == 10 && player1.getplayerAttempts() == 10) {
                 System.out.println("Попытки закончились у обоих игроков.");
                 break;
             }
