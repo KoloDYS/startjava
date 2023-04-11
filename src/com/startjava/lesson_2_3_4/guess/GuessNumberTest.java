@@ -13,7 +13,6 @@ public class GuessNumberTest {
         GuessNumber game = new GuessNumber(player1, player2);
         do {
             if (answer.equals("yes")) {
-                System.out.println("У каждого игрока по 10 попыток");
                 game.guessNumber();
                 System.out.print("Хотите продолжить игру? [yes/no]:\n");
             } else {

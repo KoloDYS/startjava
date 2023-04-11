@@ -19,20 +19,19 @@ public class Player {
         return nums[playerAttempt - 1];
     }
 
-    public void nullplayerAttempts() {
+    public void nullAttempts() {
         playerAttempt = 0;
     }
 
-    public int getplayerAttempts() {
+    public int[] getNums() {
+        return Arrays.copyOf(nums,getAttempts());
+    }
+
+    public int getAttempts() {
         return playerAttempt;
     }
 
-    public void outputAndNullArray() {
-        int[] copyArray = Arrays.copyOf(nums,playerAttempt);
-        for (int num : copyArray) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
+    public void nullArray() {
         Arrays.fill(nums, 0, playerAttempt, 0);
     }
 
