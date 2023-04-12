@@ -23,12 +23,12 @@ public class Calculator {
         a = Integer.parseInt(elements[0]);
         sign = elements[1].charAt(0);
         b = Integer.parseInt(elements[2]);
-        checkNums(a,b);
+        checkPositiveAndIntegerNums(a,b);
     }
 
-    private static void checkNums(int a, int b) {
+    private static void checkPositiveAndIntegerNums(int a, int b) {
         if (a <= 0 || b <= 0) {
-            throw new RuntimeException("Введите подходящие числа");
+            throw new RuntimeException("Введите целые положительные числа");
         }
     }
 }
