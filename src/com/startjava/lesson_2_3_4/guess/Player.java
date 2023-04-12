@@ -4,35 +4,32 @@ import java.util.Arrays;
 
 public class Player {
     private final String name;
-    private int playerAttempt;
+    private int attempt;
     private int[] nums = new int[10];
 
     public Player(String name) {
         this.name = name;
     }
 
-    public void addNum(int num) {
-        nums[playerAttempt++] = num;
-    }
-
-    public int getNum() {
-        return nums[playerAttempt - 1];
-    }
-
-    public void nullAttempts() {
-        playerAttempt = 0;
+    public int getAttempt() {
+        return attempt;
     }
 
     public int[] getNums() {
-        return Arrays.copyOf(nums,getAttempts());
+        return Arrays.copyOf(nums, attempt);
     }
 
-    public int getAttempts() {
-        return playerAttempt;
+    public int getNum() {
+        return nums[attempt - 1];
     }
 
-    public void nullArray() {
-        Arrays.fill(nums, 0, playerAttempt, 0);
+    public void addNum(int num) {
+        nums[attempt++] = num;
+    }
+
+    public void clear() {
+        Arrays.fill(nums, 0, attempt, 0);
+        attempt = 0;
     }
 
     @Override

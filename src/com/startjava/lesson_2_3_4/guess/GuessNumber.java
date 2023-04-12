@@ -23,7 +23,7 @@ public class GuessNumber {
                 break;
             }
 
-            if (player2.getAttempts() == 10 && player1.getAttempts() == 10) {
+            if (player2.getAttempt() == 10 && player1.getAttempt() == 10) {
                 System.out.println("Попытки закончились у обоих игроков.");
                 break;
             }
@@ -32,13 +32,11 @@ public class GuessNumber {
         System.out.println("Числа игроков: ");
         System.out.print(player1 + ": ");
         outputArray(player1);
-        player1.nullArray();
-        player1.nullAttempts();
+        player1.clear();
 
         System.out.print(player2 + ": ");
         outputArray(player2);
-        player2.nullArray();
-        player2.nullAttempts();
+        player2.clear();
     }
 
     private static boolean tryGuess(Player player, int targetNum) {
@@ -55,7 +53,7 @@ public class GuessNumber {
     private static boolean isGuessed(Player player, int targetNum) {
         if (player.getNum() == targetNum) {
             System.out.println("Игрок " + player + " угадал число " + targetNum + " c " +
-                    player.getAttempts() + " попытки." );
+                    player.getAttempt() + " попытки.");
             return true;
         }
         if (player.getNum() > targetNum) {
@@ -67,7 +65,7 @@ public class GuessNumber {
     }
 
     private static void checkEndAttempts(Player player) {
-        if (player.getAttempts() == 10) {
+        if (player.getAttempt() == 10) {
             System.out.println("У " + player + " закончились попытки");
         }
     }
