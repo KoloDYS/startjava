@@ -8,9 +8,13 @@ public class GuessNumberTest {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите имя игрока: ");
         Player player1 = new Player(scanner.nextLine());
+
         System.out.print("Введите имя игрока: ");
         Player player2 = new Player(scanner.nextLine());
-        GuessNumber game = new GuessNumber(player1, player2);
+
+        System.out.print("Введите имя игрока: ");
+        Player player3 = new Player(scanner.nextLine());
+        GuessNumber game = new GuessNumber(player1, player2, player3);
         do {
             if (answer.equals("yes")) {
                 game.guessNumber();
