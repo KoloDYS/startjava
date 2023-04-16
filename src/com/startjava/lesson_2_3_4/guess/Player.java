@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Player {
     private final String name;
     private int attempt;
-    private final int[] nums = new int[3];
+    private final int[] nums = new int[10];
 
     public Player(String name) {
         this.name = name;
@@ -24,7 +24,7 @@ public class Player {
     }
 
     public boolean addNum(int num) {
-        if (num <= 100 && num > 0) {
+        if (num > 0 && num <= 100) {
             nums[attempt++] = num;
             return true;
         }
