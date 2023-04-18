@@ -3,8 +3,9 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Scanner;
 
 public class GuessNumberTest {
+    static String answer = "yes";
+
     public static void main(String[] args) {
-        String answer = "yes";
         Scanner scanner = new Scanner(System.in);
         GuessNumber game = new GuessNumber(createPlayers(scanner));
         do {

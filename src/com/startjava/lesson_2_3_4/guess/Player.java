@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class Player {
     private final String name;
     private int attempt;
+    private int winCounter;
     private final int[] nums = new int[10];
 
     public Player(String name) {
@@ -13,6 +14,10 @@ public class Player {
 
     public int getAttempt() {
         return attempt;
+    }
+
+    public int getWinCounter() {
+        return winCounter;
     }
 
     public int[] getNums() {
@@ -31,9 +36,17 @@ public class Player {
         return false;
     }
 
+    public void increaseWinCounter() {
+        winCounter++;
+    }
+
     public void clear() {
         Arrays.fill(nums, 0, attempt, 0);
         attempt = 0;
+    }
+
+    public void nullWinCounter() {
+        winCounter = 0;
     }
 
     @Override
