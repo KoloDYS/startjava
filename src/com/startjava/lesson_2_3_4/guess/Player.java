@@ -3,10 +3,13 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Arrays;
 
 public class Player {
+    public static final int LOWER_LIMIT_OF_NUM = 1;
+    public static final int UPPER_LIMIT_OF_NUM = 101;
+    private static final int NUMBER_OF_ATTEMPTS = 10;
     private final String name;
     private int attempt;
-    private int winCounter;
-    private final int[] nums = new int[10];
+    private int score;
+    private final int[] nums = new int[NUMBER_OF_ATTEMPTS];
 
     public Player(String name) {
         this.name = name;
@@ -16,8 +19,8 @@ public class Player {
         return attempt;
     }
 
-    public int getWinCounter() {
-        return winCounter;
+    public int getScore() {
+        return score;
     }
 
     public int[] getNums() {
@@ -29,15 +32,15 @@ public class Player {
     }
 
     public boolean addNum(int num) {
-        if (num > 0 && num <= 100) {
+        if (num >= LOWER_LIMIT_OF_NUM && num < UPPER_LIMIT_OF_NUM) {
             nums[attempt++] = num;
             return true;
         }
         return false;
     }
 
-    public void increaseWinCounter() {
-        winCounter++;
+    public void increaseScore() {
+        score++;
     }
 
     public void clear() {
@@ -45,8 +48,8 @@ public class Player {
         attempt = 0;
     }
 
-    public void nullWinCounter() {
-        winCounter = 0;
+    public void nullifyScore() {
+        score = 0;
     }
 
     @Override

@@ -3,11 +3,11 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Scanner;
 
 public class GuessNumberTest {
-    static String answer = "yes";
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         GuessNumber game = new GuessNumber(createPlayers(scanner));
+        String answer = "yes";
         do {
             if (answer.equals("yes")) {
                 game.guessNumber();
