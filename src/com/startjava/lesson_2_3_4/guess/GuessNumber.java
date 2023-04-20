@@ -3,8 +3,7 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Random;
 import java.util.Scanner;
 
-import static com.startjava.lesson_2_3_4.guess.Player.LOWER_LIMIT_OF_NUM;
-import static com.startjava.lesson_2_3_4.guess.Player.UPPER_LIMIT_OF_NUM;
+import static com.startjava.lesson_2_3_4.guess.Player.*;
 
 public class GuessNumber {
     private static final int NUM_OF_PLAYERS = 3;
@@ -87,7 +86,7 @@ public class GuessNumber {
     }
 
     private static void checkEndAttempts(Player player) {
-        if (player.getAttempt() == 10) {
+        if (player.getAttempt() == NUMBER_OF_ATTEMPTS) {
             System.out.println("У " + player + " закончились попытки");
         }
     }

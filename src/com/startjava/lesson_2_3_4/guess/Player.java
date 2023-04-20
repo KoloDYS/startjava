@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Player {
     public static final int LOWER_LIMIT_OF_NUM = 1;
     public static final int UPPER_LIMIT_OF_NUM = 101;
-    private static final int NUMBER_OF_ATTEMPTS = 10;
+    public static final int NUMBER_OF_ATTEMPTS = 10;
     private final String name;
     private int attempt;
     private int score;
