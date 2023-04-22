@@ -3,12 +3,11 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Random;
 import java.util.Scanner;
 
-import static com.startjava.lesson_2_3_4.guess.Player.*;
-
 public class GuessNumber {
-    private static final int NUM_OF_PLAYERS = 3;
+    public static final int NUM_OF_PLAYERS = 3;
     private static final int NUM_OF_ROUNDS = 3;
     private final Player[] players = new Player[NUM_OF_PLAYERS];
+    private int targetNum;
 
     public GuessNumber(Player... player) {
         for (int i = 0; i < NUM_OF_PLAYERS; i++) {
@@ -23,20 +22,16 @@ public class GuessNumber {
         shufflePlayers();
         for (int i = 0; i < NUM_OF_ROUNDS; i++) {
             System.out.println("Раунд №" + (i + 1));
-            int targetNum = random.nextInt(LOWER_LIMIT_OF_NUM, UPPER_LIMIT_OF_NUM);
-            while (true) {
-                if (tryGuess(targetNum)) {
-                    break;
-                }
-
-                if (players[2].getAttempt() == 10) {
+            targetNum = random.nextInt(Player.START_RANGE, Player.END_RANGE);
+            while (!tryGuess()) {
+                if (players[2].getAttempt() == Player.NUM_ATTEMPTS) {
                     System.out.println("Попытки закончились у всех игроков.");
                     break;
                 }
             }
             System.out.println("Конец раунда!");
             System.out.println("Числа игроков: ");
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < NUM_OF_PLAYERS; j++) {
                 printPlayerAttempts(players[j]);
                 players[j].clear();
             }
@@ -45,19 +40,19 @@ public class GuessNumber {
     }
 
     private void shufflePlayers() {
-        for (int i = 0; i < players.length; i++) {
-            int j = (int) (Math.random() * players.length);
+        for (int i = 0; i < NUM_OF_PLAYERS; i++) {
+            int j = (int) (Math.random() * NUM_OF_PLAYERS);
             Player temp = players[i];
             players[i] = players[j];
             players[j] = temp;
         }
     }
 
-    private boolean tryGuess(int targetNum) {
+    private boolean tryGuess() {
         for (Player player : players) {
             System.out.println("Ход игрока " + player + "\nВведите число от 1 до 100");
             inputNum(player);
-            if (isGuessed(player, targetNum)) {
+            if (isGuessed(player)) {
                 return true;
             }
             checkEndAttempts(player);
@@ -72,7 +67,7 @@ public class GuessNumber {
         }
     }
 
-    private boolean isGuessed(Player player, int targetNum) {
+    private boolean isGuessed(Player player) {
         int lastNum = player.getNum();
         if (lastNum == targetNum) {
             System.out.println("Игрок " + player + " угадал число " + targetNum + " c " +
@@ -86,7 +81,7 @@ public class GuessNumber {
     }
 
     private static void checkEndAttempts(Player player) {
-        if (player.getAttempt() == NUMBER_OF_ATTEMPTS) {
+        if (player.getAttempt() == Player.NUM_ATTEMPTS) {
             System.out.println("У " + player + " закончились попытки");
         }
     }
@@ -100,19 +95,16 @@ public class GuessNumber {
     }
 
     private void outputInfoWinner() {
-        int[] wins = new int[players.length];
+        int maxScore = 0;
         int index = 0;
-        for (int i = 0; i < wins.length; i++) {
-            wins[i] = players[i].getScore();
-        }
-        int maxWins = 0;
-        for (int i = 0; i < wins.length; i++) {
-            if (wins[i] > maxWins) {
+        for (int i = 0; i < NUM_OF_PLAYERS; i++) {
+            int score = players[i].getScore();
+            if (maxScore < score) {
+                maxScore = score;
                 index = i;
-                maxWins = wins[i];
             }
         }
-        System.out.println(maxWins != 1 ? "Победитель: " + players[index] : "Победителей нет");
+        System.out.print(maxScore != 1 ? "Победитель: " + players[index] : "Победителей нет");
         nullifyWins();
     }
 
