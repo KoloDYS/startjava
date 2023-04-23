@@ -20,8 +20,8 @@ public class GuessNumberTest {
     }
 
     public static Player[] createPlayers(Scanner scanner) {
-        Player[] players = new Player[GuessNumber.NUM_OF_PLAYERS];
-        for (int i = 0; i < GuessNumber.NUM_OF_PLAYERS; i++) {
+        Player[] players = new Player[GuessNumber.NUM_PLAYERS];
+        for (int i = 0; i < GuessNumber.NUM_PLAYERS; i++) {
             System.out.print("Введите имя игрока: ");
             players[i] = new Player(scanner.nextLine());
         }

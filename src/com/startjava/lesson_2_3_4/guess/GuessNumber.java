@@ -4,13 +4,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GuessNumber {
-    public static final int NUM_OF_PLAYERS = 3;
-    private static final int NUM_OF_ROUNDS = 3;
-    private final Player[] players = new Player[NUM_OF_PLAYERS];
+    public static final int NUM_PLAYERS = 3;
+    private static final int NUM_ROUNDS = 3;
+    private final Player[] players = new Player[NUM_PLAYERS];
     private int targetNum;
 
     public GuessNumber(Player... player) {
-        for (int i = 0; i < NUM_OF_PLAYERS; i++) {
+        for (int i = 0; i < NUM_PLAYERS; i++) {
             players[i] = player[i];
         }
     }
@@ -20,7 +20,7 @@ public class GuessNumber {
         System.out.println("Игра “Угадай число”");
         System.out.println("У каждого игрока по 10 попытки. Победитель выявляется по результатам 3 раундов.");
         shufflePlayers();
-        for (int i = 0; i < NUM_OF_ROUNDS; i++) {
+        for (int i = 0; i < NUM_ROUNDS; i++) {
             System.out.println("Раунд №" + (i + 1));
             targetNum = random.nextInt(Player.START_RANGE, Player.END_RANGE);
             while (!tryGuess()) {
@@ -31,7 +31,7 @@ public class GuessNumber {
             }
             System.out.println("Конец раунда!");
             System.out.println("Числа игроков: ");
-            for (int j = 0; j < NUM_OF_PLAYERS; j++) {
+            for (int j = 0; j < NUM_PLAYERS; j++) {
                 printPlayerAttempts(players[j]);
                 players[j].clear();
             }
@@ -40,8 +40,8 @@ public class GuessNumber {
     }
 
     private void shufflePlayers() {
-        for (int i = 0; i < NUM_OF_PLAYERS; i++) {
-            int j = (int) (Math.random() * NUM_OF_PLAYERS);
+        for (int i = 0; i < NUM_PLAYERS; i++) {
+            int j = (int) (Math.random() * NUM_PLAYERS);
             Player temp = players[i];
             players[i] = players[j];
             players[j] = temp;
@@ -97,7 +97,7 @@ public class GuessNumber {
     private void outputInfoWinner() {
         int maxScore = 0;
         int index = 0;
-        for (int i = 0; i < NUM_OF_PLAYERS; i++) {
+        for (int i = 0; i < NUM_PLAYERS; i++) {
             int score = players[i].getScore();
             if (maxScore < score) {
                 maxScore = score;
