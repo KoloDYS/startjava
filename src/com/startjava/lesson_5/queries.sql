@@ -30,14 +30,17 @@ SELECT *
 \echo '--robots that destroyed the most'
 SELECT *
   FROM Jaegers
- WHERE kaijukill = (SELECT MAX(kaijukill) FROM Jaegers);
+ WHERE kaijukill = 
+	(SELECT MAX(kaijukill) 
+	   FROM Jaegers);
+
 \echo '--AVG weight of robots'
 SELECT AVG(weight)
   FROM Jaegers;
 
 \echo '--increment kajukill for active robots'
 UPDATE Jaegers
-  SET kaijukill = kaijukill + 1 
+   SET kaijukill = kaijukill + 1 
  WHERE status = 'Active';
 
 \echo '--Delete all destroyed robots' 
