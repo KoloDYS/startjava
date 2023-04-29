@@ -14,8 +14,9 @@ public class Bookshelf {
             System.out.println("На полке закончилось место. Книга не может быть добавлена");
             return;
         }
-        if (lengthOfShelf < book.toString().length()) {
-          lengthOfShelf = book.toString().length();
+        int length = book.toString().length();
+        if (lengthOfShelf < length) {
+          lengthOfShelf = length;
         }
         books[index++] = book;
         numOfBooks++;
