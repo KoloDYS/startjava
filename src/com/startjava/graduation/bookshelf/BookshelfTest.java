@@ -26,10 +26,8 @@ public class BookshelfTest {
                 1. Добавить книгу
                 2. Найти книгу
                 3. Удалить книгу
-                4. Количество книг в шкафу
-                5. Количество свободных полок
-                6. Очистить полку
-                7. Завершить работу
+                4. Очистить полку
+                5. Завершить работу
                 """;
         System.out.print(menu);
         System.out.println("Введите нужную операцию:");
@@ -56,12 +54,8 @@ public class BookshelfTest {
                 System.out.println("Введите название книги, которую ходите удалить");
                 bookshelf.deleteBook(scanner.nextLine());
             }
-            case "4", "Количество книг в шкафу" ->
-                    System.out.println("Количество книг в шкафу: " + bookshelf.numOfBooks);
-            case "5", "Количество свободных полок" ->
-                System.out.println("Количество свободных полок в шкафу: " + bookshelf.getEmptyShelfs());
-            case "6", "Очистить полку" -> bookshelf.clearShelf();
-            case "7", "Завершить работу" -> isContinue = false;
+            case "4", "Очистить полку" -> bookshelf.clearShelf();
+            case "5", "Завершить работу" -> isContinue = false;
             default -> System.out.println("Введите поддерживаемый пункт меню");
         }
     }
