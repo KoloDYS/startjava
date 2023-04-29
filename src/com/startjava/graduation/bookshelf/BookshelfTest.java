@@ -61,13 +61,9 @@ public class BookshelfTest {
             case "5", "Количество свободных полок" ->
                 System.out.println("Количество свободных полок в шкафу: " + bookshelf.getEmptyShelfs());
             case "6", "Очистить полку" -> bookshelf.clearShelf();
-            case "7", "Завершить работу" -> {
-                isContinue = false;
-                return;
-            }
+            case "7", "Завершить работу" -> isContinue = false;
             default -> System.out.println("Введите поддерживаемый пункт меню");
         }
-        getBookshelf(bookshelf);
     }
 
     private static void getBookshelf(Bookshelf bookshelf) {
