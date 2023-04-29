@@ -4,36 +4,36 @@ import java.util.Arrays;
 
 public class Bookshelf {
     private static final int MAX_NUM_BOOKS = 10;
-    private static final Book[] books = new Book[MAX_NUM_BOOKS];
-    private  static int index = 0;
-    private static int lengthOfShelf = 0;
-    static int numOfBooks;
+    public final Book[] books = new Book[MAX_NUM_BOOKS];
+    private static int index = 0;
+    int lengthOfShelf = 0;
+    int numOfBooks;
 
-    public static void addBook(Book b){
+    public void addBook(Book book) {
         if (index > 9) {
             System.out.println("На полке закончилось место. Книга не может быть добавлена");
             return;
         }
-        if (lengthOfShelf < b.getLength()) {
-          lengthOfShelf = b.getLength();
+        if (lengthOfShelf < book.toString().length()) {
+          lengthOfShelf = book.toString().length();
         }
-        books[index++] = b;
+        books[index++] = book;
         numOfBooks++;
     }
 
-    public static void findBook(String s) {
+    public void findBook(String targetBook) {
         for (int i = 0; i <= index; i++) {
-            if (books[i].getName().equals(s)) {
-                System.out.println("Книга " + s + " находится на " + (i + 1) + " полке");
+            if (books[i].getTitle().equals(targetBook)) {
+                System.out.println("Книга " + targetBook + " находится на " + (i + 1) + " полке");
                 return;
             }
         }
         System.out.println("Книга не найдена");
     }
 
-    public static void deleteBook(String s) {
+    public void deleteBook(String targetBook) {
         for (int i = 0; i < numOfBooks; i++) {
-            if (books[i].getName().equals(s)) {
+            if (books[i].getTitle().equals(targetBook)) {
                 calculateLengthOfShelf(books[i]);
                 System.arraycopy(books, i + 1, books, i, (--numOfBooks) - i);
                 index--;
@@ -44,40 +44,26 @@ public class Bookshelf {
         System.out.println("Книга не найдена");
     }
 
-    public static void getBooks() {
-        System.out.println("Актуальное состояние шкафа: ");
-        infoAboutShelfs();
-        for (int i = 0; i < numOfBooks; i++) {
-            System.out.println("|" + books[i] + " ".repeat(lengthOfShelf - books[i].getLength()) + "|");
-            System.out.println("|" + "-".repeat(lengthOfShelf) + "|");
-        }
-        if(numOfBooks != 0 && getEmptyShelfs() != 0) {
-            System.out.println("|" + " ".repeat(lengthOfShelf) + "|");
-        } else if (numOfBooks == 0){
-            System.out.println("Шкаф пуст. Вы можете добавить в него первую книгу");
-        }
-    }
-
-    public static int getEmptyShelfs() {
+    public int getEmptyShelfs() {
         return (MAX_NUM_BOOKS - numOfBooks);
     }
 
-    public static void clearShelf() {
+    public void clearShelf() {
         Arrays.fill(books, 0, index, null);
         numOfBooks = 0;
         index = 0;
         System.out.println("Полка очищена");
     }
 
-    private static void infoAboutShelfs() {
+    public void infoAboutShelfs() {
         System.out.println("В шкафу " + numOfBooks + " книг и свободно " + getEmptyShelfs() + " полок");
     }
-    private static void calculateLengthOfShelf(Book b) {
-        if (b.getLength() == lengthOfShelf) {
+    private void calculateLengthOfShelf(Book book) {
+        if (book.toString().length() == lengthOfShelf) {
             lengthOfShelf = 0;
             for (int i = 0; i < numOfBooks; i++) {
-                if (!b.equals(books[i])) {
-                    lengthOfShelf = Math.max(lengthOfShelf, books[i].getLength());
+                if (!book.equals(books[i])) {
+                    lengthOfShelf = Math.max(lengthOfShelf, books[i].toString().length());
                 }
             }
         }
