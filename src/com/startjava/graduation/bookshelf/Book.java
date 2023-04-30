@@ -3,12 +3,18 @@ package com.startjava.graduation.bookshelf;
 public class Book {
     private final String author;
     private final String title;
+    private final int length;
     private final int year;
 
     public Book(String author, String title, int year) {
         this.author = author;
         this.title = title;
         this.year = year;
+        length = toString().length();
+    }
+
+    public int getLength() {
+        return length;
     }
 
     public String getTitle() {
