@@ -3,8 +3,8 @@ package com.startjava.graduation.bookshelf;
 public class Book {
     private final String author;
     private final String title;
-    private final int length;
     private final int year;
+    private final int length;
 
     public Book(String author, String title, int year) {
         this.author = author;
@@ -13,12 +13,12 @@ public class Book {
         length = toString().length();
     }
 
-    public int getLength() {
-        return length;
-    }
-
     public String getTitle() {
         return title;
+    }
+
+    public int getLength() {
+        return length;
     }
 
     @Override

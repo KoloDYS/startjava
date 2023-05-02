@@ -5,7 +5,6 @@ import java.util.Arrays;
 public class Bookshelf {
     private static final int CAPACITY = 10;
     private final Book[] books = new Book[CAPACITY];
-    private int index;
     private int lengthShelf;
     private int numBooks;
 
@@ -22,33 +21,32 @@ public class Bookshelf {
     }
 
     public void add(Book book) {
-        if (index == CAPACITY) {
+        if (numBooks >= CAPACITY) {
             System.out.println("На полке закончилось место. Книга не может быть добавлена");
             return;
         }
         if (lengthShelf < book.getLength()) {
             lengthShelf = book.getLength();
         }
-        books[index++] = book;
-        numBooks++;
+        books[numBooks++] = book;
     }
 
-    public void find(String title) {
-        for (int i = 0; i <= index; i++) {
+    public Book find(String title) {
+        for (int i = 0; i <= numBooks; i++) {
             if (books[i].getTitle().equals(title)) {
                 System.out.println("Книга " + title + " находится на " + (i + 1) + " полке");
-                return;
+                return books[i];
             }
         }
         System.out.println("Книга не найдена");
+        return null;
     }
 
     public void delete(String title) {
         for (int i = 0; i < numBooks; i++) {
             if (books[i].getTitle().equals(title)) {
-                calculatelengthShelf(books[i]);
+                calculateLengthShelf(books[i]);
                 System.arraycopy(books, i + 1, books, i, (--numBooks) - i);
-                index--;
                 System.out.println("Книга была удалена");
                 return;
             }
@@ -61,21 +59,16 @@ public class Bookshelf {
     }
 
     public void clearShelf() {
-        Arrays.fill(books, 0, index, null);
+        Arrays.fill(books, 0, numBooks, null);
         numBooks = 0;
-        index = 0;
         System.out.println("Полка очищена");
     }
 
-    public void infoAboutShelfs() {
-        System.out.println("В шкафу " + numBooks + " книг и свободно " + getEmptyShelfs() + " полок");
-    }
-
-    private void calculatelengthShelf(Book book) {
-        if (book.toString().length() == lengthShelf) {
+    private void calculateLengthShelf(Book book) {
+        if (book.getLength() == lengthShelf) {
             lengthShelf = 0;
             for (int i = 0; i < numBooks; i++) {
-                if (!book.equals(books[i])) {
+                if (!(book.getLength() == books[i].getLength())) {
                     lengthShelf = Math.max(lengthShelf, books[i].getLength());
                 }
             }
