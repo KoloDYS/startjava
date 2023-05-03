@@ -31,15 +31,13 @@ public class Bookshelf {
         books[numBooks++] = book;
     }
 
-    public Book find(String title) {
+    public int find(String title) {
         for (int i = 0; i <= numBooks; i++) {
             if (books[i].getTitle().equals(title)) {
-                System.out.println("Книга " + title + " находится на " + (i + 1) + " полке");
-                return books[i];
+                return i + 1;
             }
         }
-        System.out.println("Книга не найдена");
-        return null;
+        return 0;
     }
 
     public void delete(String title) {

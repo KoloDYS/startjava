@@ -56,7 +56,8 @@ public class BookshelfTest {
             case "1", "Добавить книгу" -> addBook(scanner, bookshelf);
             case "2", "Найти книгу" -> {
                 System.out.println("Введите название книги: ");
-                bookshelf.find(scanner.nextLine());
+                int numShelf = bookshelf.find(scanner.nextLine());
+                System.out.println("Книга " + (numShelf != 0 ? "на " + numShelf + " полке" : "не найдена"));
             }
             case "3", "Удалить книгу" -> {
                 System.out.println("Введите название книги, которую ходите удалить");
