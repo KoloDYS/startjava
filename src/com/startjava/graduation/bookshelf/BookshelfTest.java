@@ -88,7 +88,7 @@ public class BookshelfTest {
     }
 
     private static void pressEnter(Scanner scanner) {
-        String enter = "s";
+        String enter = " ";
         while (!enter.equals("")) {
             System.out.println("Введите Enter для продолжения");
             enter = scanner.nextLine();
