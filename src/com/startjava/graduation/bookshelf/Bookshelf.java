@@ -25,26 +25,25 @@ public class Bookshelf {
             System.out.println("На полке закончилось место. Книга не может быть добавлена");
             return;
         }
-        if (lengthShelf < book.getLength()) {
-            lengthShelf = book.getLength();
-        }
+        lengthShelf = Math.max(lengthShelf, book.getLength());
+        book.setNumShelf(numBooks + 1);
         books[numBooks++] = book;
     }
 
-    public int find(String title) {
-        for (int i = 0; i <= numBooks; i++) {
+    public Book find(String title) {
+        for (int i = 0; i < numBooks; i++) {
             if (books[i].getTitle().equals(title)) {
-                return i + 1;
+                return books[i];
             }
         }
-        return 0;
+        return null;
     }
 
     public void delete(String title) {
         for (int i = 0; i < numBooks; i++) {
             if (books[i].getTitle().equals(title)) {
                 calculateLengthShelf(books[i]);
-                System.arraycopy(books, i + 1, books, i, (--numBooks) - i);
+                System.arraycopy(books, i + 1, books, i, --numBooks - i);
                 System.out.println("Книга была удалена");
                 return;
             }

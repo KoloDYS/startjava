@@ -5,6 +5,7 @@ public class Book {
     private final String title;
     private final int year;
     private final int length;
+    private int numShelf;
 
     public Book(String author, String title, int year) {
         this.author = author;
@@ -19,6 +20,14 @@ public class Book {
 
     public int getLength() {
         return length;
+    }
+
+    public void setNumShelf(int numShelf) {
+        this.numShelf = numShelf;
+    }
+
+    public int getNumShelf() {
+        return numShelf;
     }
 
     @Override
