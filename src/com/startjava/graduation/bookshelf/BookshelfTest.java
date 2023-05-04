@@ -19,17 +19,19 @@ public class BookshelfTest {
     }
 
     private static void showBookshelf(Bookshelf bookshelf) {
-        if (bookshelf.getNumBooks() != 0) {
-            showInfoAboutShelfs(bookshelf);
-        }
-        int length = bookshelf.getLengthShelf();
         int numBooks = bookshelf.getNumBooks();
         if (numBooks == 0) {
             System.out.println("Шкаф пуст. Вы можете добавить в него первую книгу");
             return;
         }
+        if (bookshelf.getNumBooks() > 0) {
+            showInfoAboutShelfs(bookshelf);
+        }
+        Book[] books = bookshelf.getBooks();
+        int length = bookshelf.getLengthShelf();
         for (int i = 0; i < numBooks; i++) {
-            System.out.println("|" + bookshelf.getBooks()[i] + " ".repeat(length - bookshelf.getBooks()[i].getLength()) + "|");
+            System.out.println("|" + books[i] +
+                    " ".repeat(length - books[i].getLength()) + "|");
             System.out.println("|" + "-".repeat(length) + "|");
         }
         if (bookshelf.getEmptyShelfs() > 0) {
@@ -38,7 +40,8 @@ public class BookshelfTest {
     }
 
     private static void showInfoAboutShelfs(Bookshelf bookshelf) {
-        System.out.println("В шкафу " + bookshelf.getNumBooks() + " книг и свободно " + bookshelf.getEmptyShelfs() + " полок");
+        System.out.println("В шкафу " + bookshelf.getNumBooks() +
+                " книг и свободно " + bookshelf.getEmptyShelfs() + " полок");
     }
 
     private static void printMenu() {
@@ -79,7 +82,7 @@ public class BookshelfTest {
     private static void findBook(Scanner scanner, Bookshelf bookshelf) {
         System.out.println("Введите название книги: ");
         Book book = bookshelf.find(scanner.nextLine());
-        System.out.println("Книга " + (book != null ? book.getTitle() + "на " + book.getNumShelf() + " полке" : "не найдена"));
+        System.out.println("Книга " + (book != null ? book + " на " + book.getNumShelf() + " полке" : "не найдена"));
     }
 
     private static void deleteBook(Scanner scanner, Bookshelf bookshelf) {

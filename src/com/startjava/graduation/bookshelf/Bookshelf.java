@@ -65,7 +65,7 @@ public class Bookshelf {
         if (book.getLength() == lengthShelf) {
             lengthShelf = 0;
             for (int i = 0; i < numBooks; i++) {
-                if (!(book.getLength() == books[i].getLength())) {
+                if (book.getLength() != books[i].getLength()) {
                     lengthShelf = Math.max(lengthShelf, books[i].getLength());
                 }
             }
